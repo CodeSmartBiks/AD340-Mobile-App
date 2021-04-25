@@ -1,9 +1,0 @@
-<resources>
-    <string name="app_name">MyApp</string>
-
-    <string name="button1">Send</string>
-    <string name="button2">ZipOne</string>
-    <string name="button3">ZipTwo</string>
-    <string name="button4">ZipThree</string>
-    <string name="button5">ZipFour</string>
-</resources>

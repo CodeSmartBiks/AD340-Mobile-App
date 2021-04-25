@@ -1,0 +1,12 @@
+<resources>
+    <string name="app_name">BiksApp</string>
+
+    <string name="name">Bikash Jung Thapa</string>
+    <string name="Header">Fun Fact: I love hiking and outdoorsports</string>
+    <string name="enter">Enter Anything</string>
+    <string name="info_button">Info</string>
+    <string name="labelMovies">Movies</string>
+    <string name="labelMoviesDetails">MoviesDetails</string>
+    <string name="menuList">MenuList</string>
+
+</resources>

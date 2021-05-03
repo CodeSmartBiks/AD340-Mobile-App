@@ -12,13 +12,12 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.Button;
-import android.widget.EditText;
 import android.widget.GridView;
 import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
 
-    String[] btnStringArray = {"Trails Hike", "Trees Look", "Lakes Views","Movies"};
+    String[] btnStringArray = {"Trails Hike", "Trees Look", "Traffic Cam","Movies"};
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -57,8 +56,10 @@ public class MainActivity extends AppCompatActivity {
     public void makeToast(View view) {
         Button btn = (Button) view;
         if (btn.getText() == "Movies") {
-            startActivity(new Intent(MainActivity.this,MoviesActivity.class));
+            startActivity(new Intent(MainActivity.this, MoviesActivity.class));
 
+        } else if (btn.getText() == "Traffic Cam") {
+            startActivity(new Intent(MainActivity.this, TrafficCameraActivity.class));
         } else {
             Toast.makeText(getApplicationContext(), btn.getText(), Toast.LENGTH_SHORT).show();
         }

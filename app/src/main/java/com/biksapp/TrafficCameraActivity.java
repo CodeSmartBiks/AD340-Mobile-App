@@ -48,7 +48,6 @@ public class TrafficCameraActivity extends AppCompatActivity {
         if (checkNetwork()){
             retrieveJSON();
         }else if(!checkNetwork()){
-//        removeSimpleProgressDialog();
             Toast.makeText(TrafficCameraActivity.this,"Please connect to Internet.You are disconnected!",Toast.LENGTH_LONG).show();
             Toast.makeText(TrafficCameraActivity.this,"Please connect your device!",Toast.LENGTH_LONG).show();
         }

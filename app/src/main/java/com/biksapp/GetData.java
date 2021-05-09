@@ -34,7 +34,7 @@ public class GetData extends AsyncTask<Void,Void,Void> {
             JSONArray JA= new JSONArray(data);
             for (int i=0; i<JA.length();i++){
                 JSONObject JO = (JSONObject) JA.get(i);
-                singleParsed = "Discription: "+ JO.get("Discription")+"\n"+
+                singleParsed = "Description: "+ JO.get("Description")+"\n"+
                         "Camera: "+ JO.get("ImageUrl");
                 dataParsed+=singleParsed;
 
@@ -49,6 +49,5 @@ public class GetData extends AsyncTask<Void,Void,Void> {
     protected void onPostExecute(Void aVoid){
 
         super.onPostExecute(aVoid);
-//        CamerasActivity.data.setText(this.dataParsed);
     }
 }

@@ -48,7 +48,7 @@ public class TrafficCameraActivity extends AppCompatActivity {
         if (checkNetwork()){
             retrieveJSON();
         }else if(!checkNetwork()){
-            Toast.makeText(TrafficCameraActivity.this,"Please connect to Internet.You are disconnected!",Toast.LENGTH_LONG).show();
+            Toast.makeText(TrafficCameraActivity.this,"Please connect to Internet.",Toast.LENGTH_LONG).show();
             Toast.makeText(TrafficCameraActivity.this,"Please connect your device!",Toast.LENGTH_LONG).show();
         }
 
@@ -114,7 +114,6 @@ public class TrafficCameraActivity extends AppCompatActivity {
             e.printStackTrace();
         }
     }
-    //show the dialogbox
     public static void showSimpleProgressDialog(Context context, String title,
                                                 String msg, boolean isCancelable) {
         try {

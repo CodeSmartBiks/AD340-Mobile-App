@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Context;
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.Menu;
@@ -61,7 +62,11 @@ public class MainActivity extends AppCompatActivity {
         } else if (btn.getText() == "Traffic Cam") {
             startActivity(new Intent(MainActivity.this, TrafficCameraActivity.class));
         } else if (btn.getText() == "Traffic Cam Map") {
-            startActivity(new Intent(MainActivity.this, TrafficCamMap.class));
+            startActivity(new Intent(MainActivity.this, MapActivity.class));
+//            Intent intent= new Intent(Intent.ACTION_VIEW);
+//            intent.setData(Uri.parse("geo:47.79486568176124, -122.3031436396376"));
+//            Intent choose= Intent.createChooser(intent,"Traffic Cam Map");
+//            startActivity(choose);
         } else {
             Toast.makeText(getApplicationContext(), btn.getText(), Toast.LENGTH_SHORT).show();
         }

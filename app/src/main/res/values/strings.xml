@@ -17,5 +17,8 @@
     <string name="mobile_connection">The active connection is mobile.</string>
     <string name="no_wifi_or_mobile">No wireless or mobile connection.</string>
     <string name="dataLoading">Cameras Information are loading.Please be patience...</string>
+    <string name="label_latitude">Latitude</string>
+    <string name="label_longitude">Longitude</string>
+    <string name="label_location">Location</string>
 
 </resources>

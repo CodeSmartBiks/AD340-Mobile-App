@@ -2,12 +2,13 @@
     <string name="app_name">THIS IS YOUR APP</string>
 
     <string name="name">Bikash Jung Thapa</string>
-    <string name="Header">Fun Fact: I love hiking and outdoorsports</string>
+    <string name="Header">Fun Fact: I love hiking and outdoor sports</string>
     <string name="enter">Enter Anything</string>
     <string name="info_button">Info</string>
     <string name="labelMovies">Movies</string>
     <string name="labelMoviesDetails">Movies Details</string>
     <string name="labelTrafficCam">Traffic Cameras</string>
+    <string name="labelTrafficCamMap">Traffic Cameras Map</string>
     <string name="menuList">MenuList</string>
     <string name="cameras">Cameras</string>
     <string name="SeattleCameras">Seattle Traffic Cameras</string>

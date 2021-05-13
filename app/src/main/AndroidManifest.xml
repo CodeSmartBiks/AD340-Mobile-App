@@ -15,7 +15,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.BiksApp">
         <activity android:name=".TrafficCamMap"></activity>
-        <activity android:name=".MapActivity" />
+        <activity android:name=".MapActivity"
+        android:label="@string/labelCurrentLocation"
+        android:parentActivityName=".MainActivity" />
         <activity
             android:name=".TrafficCameraActivity"
             android:label="@string/labelTrafficCam"

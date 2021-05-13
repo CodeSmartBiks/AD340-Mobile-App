@@ -18,7 +18,7 @@ import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
 
-    String[] btnStringArray = {"Trails Hike", "Traffic Cam Map", "Traffic Cam","Movies"};
+    String[] btnStringArray = {"Trails Hike", "Traffic Cam Map", "Traffic Cam","Movies","Current Location"};
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -61,6 +61,8 @@ public class MainActivity extends AppCompatActivity {
 
         } else if (btn.getText() == "Traffic Cam") {
             startActivity(new Intent(MainActivity.this, TrafficCameraActivity.class));
+        } else if (btn.getText() == "Current Location") {
+            startActivity(new Intent(MainActivity.this, MapActivity.class));
         } else if (btn.getText() == "Traffic Cam Map") {
             startActivity(new Intent(MainActivity.this, TrafficCamMap.class));
 //            Intent intent= new Intent(Intent.ACTION_VIEW);

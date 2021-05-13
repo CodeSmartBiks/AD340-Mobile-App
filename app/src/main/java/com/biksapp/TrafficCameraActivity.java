@@ -66,10 +66,13 @@ public class TrafficCameraActivity extends AppCompatActivity {
                             JSONObject obj = new JSONObject(response);
                             JSONArray features = obj.getJSONArray("Features");
                             for (int j = 0; j < features.length(); j++) {
+                                JSONObject point = features.getJSONObject(j);
+                                JSONArray pointCoords = point.getJSONArray("PointCoordinate");
+                                double[] coords = {pointCoords.getDouble(0), pointCoords.getDouble(1)};
                                 JSONArray cameras = features.getJSONObject(j).getJSONArray("Cameras");
                                 Cameras camera = new Cameras(cameras.getJSONObject(0).getString("Description"),
                                         cameras.getJSONObject(0).getString("ImageUrl"),
-                                        cameras.getJSONObject(0).getString("Type"));
+                                        cameras.getJSONObject(0).getString("Type"),coords);
                                 cameraList.add(camera);
                             }
                             setupListView();

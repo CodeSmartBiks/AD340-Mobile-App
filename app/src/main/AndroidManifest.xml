@@ -14,7 +14,6 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.BiksApp">
-        <activity android:name=".TrafficCamMap"></activity>
         <activity android:name=".MapActivity"
         android:label="@string/labelCurrentLocation"
         android:parentActivityName=".MainActivity" />

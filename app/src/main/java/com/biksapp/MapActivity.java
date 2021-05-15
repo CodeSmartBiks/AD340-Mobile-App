@@ -5,6 +5,8 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.Manifest;
 import android.content.pm.PackageManager;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.location.Location;
 import android.os.Bundle;
 
@@ -15,6 +17,8 @@ import androidx.fragment.app.FragmentActivity;
 
 import android.os.Bundle;
 import android.util.Log;
+import android.view.Menu;
+import android.view.MenuInflater;
 import android.widget.Toast;
 
 import com.android.volley.Request;
@@ -43,6 +47,7 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
+import java.util.Map;
 /*   This is the flow how this activity works
     load map in onCreate method
     when map has loaded, get your device location
@@ -63,8 +68,8 @@ public class MapActivity extends FragmentActivity implements OnMapReadyCallback 
     FusedLocationProviderClient fusedLocationProviderClient;
     private Location lastKnownLocation;
     private static final String TAG = MapActivity.class.getSimpleName();
-    private final LatLng defaultLocation = new LatLng(47.79469261671784, -122.30271454279551);
-    private static final int DEFAULT_ZOOM = 10;
+    //private final LatLng defaultLocation = new LatLng(47.5942, -122.2559);
+    private static final float DEFAULT_ZOOM = 12f;
 
 
     @Override
@@ -77,19 +82,20 @@ public class MapActivity extends FragmentActivity implements OnMapReadyCallback 
         SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
                 .findFragmentById(R.id.map);
         mapFragment.getMapAsync(MapActivity.this);
-        loadCamData();
+
+
     }
 
     @Override
-    public void onMapReady(GoogleMap map) {
-        this.map = map;
-
+    public void onMapReady(GoogleMap googleMap) {
+        this.map = googleMap;
         // Turn on the My Location layer and the related control on the map.
         updateLocationUI();
         // Get the current location of the device and set the position of the map.
+
         getDeviceLocation();
 
-        loadCamData();
+        //loadCamData();
 
 
     }
@@ -165,20 +171,24 @@ public class MapActivity extends FragmentActivity implements OnMapReadyCallback 
                                 map.moveCamera(CameraUpdateFactory.newLatLngZoom(
                                         new LatLng(lastKnownLocation.getLatitude(),
                                                 lastKnownLocation.getLongitude()), DEFAULT_ZOOM));
+
                                 //setting the marker after the camara is positioned
                                 LatLng devicePosition = new LatLng(lastKnownLocation.getLatitude(),
                                         lastKnownLocation.getLongitude());
                                 Marker marker = map.addMarker(new MarkerOptions().
-                                        position(devicePosition).title("Current Location"));
+                                        position(devicePosition).title("You are here"));
+                               // marker.setIcon(BitmapDescriptorFactory.fromBitmap(resizeBitmap("marker",72,64)));
                                 marker.setIcon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_BLUE));
+                                map.animateCamera(CameraUpdateFactory.newLatLngZoom(devicePosition, DEFAULT_ZOOM));
                                 marker.setTag(0);
                             }
+                            loadCamData();
                         } else {
                             Log.d(TAG, "Current location null");
                             Log.e(TAG, "Exception: %s", task.getException());
-                            map.moveCamera(CameraUpdateFactory
-                                    .newLatLngZoom(defaultLocation, DEFAULT_ZOOM));
-                            map.getUiSettings().setMyLocationButtonEnabled(false);
+//                            map.moveCamera(CameraUpdateFactory
+//                                    .newLatLngZoom(defaultLocation, DEFAULT_ZOOM));
+//                            map.getUiSettings().setMyLocationButtonEnabled(false);
                         }
 
                     }
@@ -229,17 +239,24 @@ public class MapActivity extends FragmentActivity implements OnMapReadyCallback 
         requestQueue.add(stringRequest);
     }
 
-    //this method is to set the marker for the camrera data
+    //this method is to set the marker for the camerra data
     private void markerForCameraData() {
         for (int i = 0; i < cameraList.size(); i++) {
             Cameras camera = cameraList.get(i);
             LatLng latLng = new LatLng(camera.getCoordinate()[0], camera.getCoordinate()[1]);
             MarkerOptions markerOptions = new MarkerOptions().position(latLng)
                     .title(camera.description).snippet(camera.getImageUrl());
-            map.animateCamera(CameraUpdateFactory.newLatLng(latLng));
-            map.animateCamera(CameraUpdateFactory.newLatLngZoom(latLng, DEFAULT_ZOOM));
-            Marker marker = map.addMarker((markerOptions));
-            marker.setTag(i);
+            //map.animateCamera(CameraUpdateFactory.newLatLng(latLng));
+            //map.animateCamera(CameraUpdateFactory.newLatLngZoom(latLng, DEFAULT_ZOOM));
+           Marker marker = map.addMarker((markerOptions));
+           marker.setTag(i);
         }
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.menu_bar,menu);
+        return true;
     }
 }

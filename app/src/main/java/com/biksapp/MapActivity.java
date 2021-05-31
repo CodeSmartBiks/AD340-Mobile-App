@@ -58,6 +58,7 @@ import java.util.Map;
 
 
 public class MapActivity extends FragmentActivity implements OnMapReadyCallback {
+
     //local variables
     private static final int PERMISSIONS_REQUEST_ACCESS_FINE_LOCATION = 1;
     ArrayList<Cameras> cameraList = null;
@@ -81,7 +82,7 @@ public class MapActivity extends FragmentActivity implements OnMapReadyCallback 
         fusedLocationProviderClient = LocationServices.getFusedLocationProviderClient(this);
         SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
                 .findFragmentById(R.id.map);
-        mapFragment.getMapAsync(MapActivity.this);
+        mapFragment.getMapAsync(this);
 
 
     }
@@ -94,10 +95,16 @@ public class MapActivity extends FragmentActivity implements OnMapReadyCallback 
         // Get the current location of the device and set the position of the map.
 
         getDeviceLocation();
+        getLocationPermission();
+
+        setMyLocationEnabled(true);
 
         //loadCamData();
 
 
+    }
+
+    private void setMyLocationEnabled(boolean b) {
     }
 
     private void getLocationPermission() {
@@ -177,7 +184,7 @@ public class MapActivity extends FragmentActivity implements OnMapReadyCallback 
                                         lastKnownLocation.getLongitude());
                                 Marker marker = map.addMarker(new MarkerOptions().
                                         position(devicePosition).title("You are here"));
-                               // marker.setIcon(BitmapDescriptorFactory.fromBitmap(resizeBitmap("marker",72,64)));
+                                // marker.setIcon(BitmapDescriptorFactory.fromBitmap(resizeBitmap("marker",72,64)));
                                 marker.setIcon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_BLUE));
                                 map.animateCamera(CameraUpdateFactory.newLatLngZoom(devicePosition, DEFAULT_ZOOM));
                                 marker.setTag(0);
@@ -239,24 +246,22 @@ public class MapActivity extends FragmentActivity implements OnMapReadyCallback 
         requestQueue.add(stringRequest);
     }
 
-    //this method is to set the marker for the camerra data
+    //this method is to set the marker for the camera data
     private void markerForCameraData() {
         for (int i = 0; i < cameraList.size(); i++) {
             Cameras camera = cameraList.get(i);
             LatLng latLng = new LatLng(camera.getCoordinate()[0], camera.getCoordinate()[1]);
             MarkerOptions markerOptions = new MarkerOptions().position(latLng)
                     .title(camera.description).snippet(camera.getImageUrl());
-            //map.animateCamera(CameraUpdateFactory.newLatLng(latLng));
-            //map.animateCamera(CameraUpdateFactory.newLatLngZoom(latLng, DEFAULT_ZOOM));
-           Marker marker = map.addMarker((markerOptions));
-           marker.setTag(i);
+            Marker marker = map.addMarker((markerOptions));
+            marker.setTag(i);
         }
     }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         MenuInflater inflater = getMenuInflater();
-        inflater.inflate(R.menu.menu_bar,menu);
+        inflater.inflate(R.menu.menu_bar, menu);
         return true;
     }
 }

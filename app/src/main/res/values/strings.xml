@@ -3,10 +3,13 @@
 
     <string name="name">Bikash Jung Thapa</string>
     <string name="Header">Fun Fact: I love hiking and outdoor sports</string>
-    <string name="enter">Enter Anything</string>
-    <string name="info_button">Info</string>
+    <string name="userName">UserName</string>
+    <string name="email">Email Address</string>
+    <string name="password">Enter password</string>
+    <string name="info_button">SignIn</string>
     <string name="labelMovies">Movies</string>
     <string name="labelMoviesDetails">Movies Details</string>
+    <string name="firebaseDetails">Firebase Details</string>
     <string name="labelTrafficCam">Traffic Cameras</string>
     <string name="labelCurrentLocation">Traffic Cam Map</string>
     <string name="menuList">MenuList</string>

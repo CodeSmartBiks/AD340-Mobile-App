@@ -2,6 +2,7 @@ plugins {
     id 'com.android.application'
     id 'kotlin-android'
     id 'com.google.secrets_gradle_plugin' version '0.5'
+    id 'com.google.gms.google-services'
 }
 
 android {
@@ -50,6 +51,8 @@ dependencies {
     implementation 'androidx.legacy:legacy-support-v4:1.0.0'
     implementation 'com.google.android.gms:play-services-maps:16.1.0'
     implementation 'com.google.android.gms:play-services-location:16.0.0'
+    implementation 'com.google.firebase:firebase-bom:28.0.1'
+    implementation 'com.google.firebase:firebase-database'
 
     api 'com.google.firebase:firebase-database:19.7.0'
     api 'com.google.firebase:firebase-auth:20.0.4'

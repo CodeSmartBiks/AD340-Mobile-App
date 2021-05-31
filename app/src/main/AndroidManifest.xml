@@ -14,10 +14,15 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.BiksApp">
-
-        <activity android:name=".MapActivity"
-        android:label="@string/labelCurrentLocation"
-        android:parentActivityName=".MainActivity" />
+        <activity android:name=".LoginSharedPreference" />
+        <activity
+            android:name=".FirebaseActivity"
+            android:label="@string/firebaseDetails"
+            android:parentActivityName=".MainActivity" />
+        <activity
+            android:name=".MapActivity"
+            android:label="@string/labelCurrentLocation"
+            android:parentActivityName=".MainActivity" />
         <activity
             android:name=".TrafficCameraActivity"
             android:label="@string/labelTrafficCam"
